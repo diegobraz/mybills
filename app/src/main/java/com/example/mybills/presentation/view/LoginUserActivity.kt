@@ -40,9 +40,7 @@ class LoginUserActivity : AppCompatActivity() {
                     OnCompleteListener<AuthResult>{ task ->
                         if (task.isSuccessful){
                             val FirebaseUser : FirebaseUser = task.result!!.user!!
-//                            Toast.makeText(this,
-//                                "Registrado com sucesso",
-//                                Toast.LENGTH_SHORT).show()
+
                             val intent = Intent(this,MainActivity::class.java)
                             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                             intent.putExtra("user_id",FirebaseUser.uid)
