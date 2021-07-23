@@ -21,14 +21,17 @@ class RegistratioActivity : AppCompatActivity() {
     }
     private fun loadListener() {
         biding.closeBtn.setOnClickListener {
-            finish()
+            val intent = Intent(this, LoginUserActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
         }
 
         biding.btnRegistre.setOnClickListener{
              if (validationRegistre()){
 
-                 val email: String = biding.txtEmailRegistre.toString().trim { it <= ' ' }
-                 val password: String = biding.passwordRegistre.toString().trim { it <= ' ' }
+                 val email: String = biding.txtEmailRegistre.text.toString().trim { it <= ' ' }
+                 val password: String = biding.txtPassword.text.toString().trim { it <= ' ' }
+
 
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,password)
                     .addOnCompleteListener(

@@ -39,13 +39,14 @@
         android:hint="@string/email_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/title">
+        app:layout_constraintTop_toBottomOf="@id/title"
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/txt_email_registre"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="textEmailAddress" />
+            android:inputType="text" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
