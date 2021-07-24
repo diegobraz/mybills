@@ -25,7 +25,7 @@ class LoginUserActivity : AppCompatActivity() {
     private fun loadMethode() {
 
         biding.registrarUser.setOnClickListener {
-            val intent = Intent(this,RegistratioActivity::class.java)
+            val intent = Intent(this@LoginUserActivity, RegistratioActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
@@ -41,14 +41,14 @@ class LoginUserActivity : AppCompatActivity() {
                         if (task.isSuccessful){
                             val FirebaseUser : FirebaseUser = task.result!!.user!!
 
-                            val intent = Intent(this,MainActivity::class.java)
+                            val intent = Intent(this@LoginUserActivity,MainActivity::class.java)
                             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                             intent.putExtra("user_id",FirebaseUser.uid)
                             intent.putExtra("email_id",email)
                             startActivity(intent)
                             finish()
                         }else{
-                            Toast.makeText(this, task.exception?.message.toString(), Toast.LENGTH_SHORT).show()
+                            Toast.makeText(this@LoginUserActivity, task.exception?.message.toString(), Toast.LENGTH_SHORT).show()
                         }
                     }
                 )

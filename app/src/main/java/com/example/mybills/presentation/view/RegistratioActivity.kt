@@ -21,7 +21,7 @@ class RegistratioActivity : AppCompatActivity() {
     }
     private fun loadListener() {
         biding.closeBtn.setOnClickListener {
-            val intent = Intent(this, LoginUserActivity::class.java)
+            val intent = Intent(this@RegistratioActivity, LoginUserActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
@@ -38,17 +38,17 @@ class RegistratioActivity : AppCompatActivity() {
                         OnCompleteListener<AuthResult>{ task ->
                             if (task.isSuccessful){
                                 val FirebaseUser : FirebaseUser = task.result!!.user!!
-                                Toast.makeText(this,
+                                Toast.makeText(this@RegistratioActivity,
                                     "Registrado com sucesso",
                                     Toast.LENGTH_SHORT).show()
-                                val intent = Intent(this,MainActivity::class.java)
+                                val intent = Intent(this@RegistratioActivity,MainActivity::class.java)
                                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                                 intent.putExtra("user_id",FirebaseUser.uid)
                                 intent.putExtra("email_id",email)
                                 startActivity(intent)
                                 finish()
                             }else{
-                                Toast.makeText(this, task.exception?.message.toString(), Toast.LENGTH_SHORT).show()
+                                Toast.makeText(this@RegistratioActivity, task.exception?.message.toString(), Toast.LENGTH_SHORT).show()
                             }
                         }
                     )
