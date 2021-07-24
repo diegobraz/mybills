@@ -9,8 +9,8 @@ import java.util.*
 data class Receita(
     @PrimaryKey(autoGenerate = true)
     val id : Int = 0,
-//    val valor: BigDecimal? = null,
+    val valor: Double,
     val decricao: String,
-//    val data: Date,
+    val data: String,
     val Recebido: Boolean
 )

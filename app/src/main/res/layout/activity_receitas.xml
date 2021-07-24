@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.view.ReceitasActivity">
+    tools:context=".presentation.view.receitas.AddReceitasActivity">
 
 
     <TextView
@@ -70,7 +70,7 @@
             android:id="@+id/txt_data"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="date" />
+            android:inputType="date"/>
 
     </com.google.android.material.textfield.TextInputLayout>
 

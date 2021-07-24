@@ -5,9 +5,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mybills.R
 import com.example.mybills.databinding.ActivityMainBinding
+import com.example.mybills.presentation.view.receitas.AddReceitasActivity
+import com.example.mybills.presentation.view.receitas.ReceitasListaActivity
 
 
 class MainActivity : AppCompatActivity() {
@@ -29,17 +32,27 @@ class MainActivity : AppCompatActivity() {
             onAddButtonCliked()
         }
         biding.floatingReceitasButton.setOnClickListener {
-            val intent = Intent(this, ReceitasActivity::class.java)
+            val intent = Intent(this, AddReceitasActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
 
         }
 
         biding.floatingDespesasButton.setOnClickListener {
-            val intent = Intent(this, AddDespesasActivity::class.java)
+            val intent = Intent(this@MainActivity, AddDespesasActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
 
+        }
+
+        biding.receitaValue.setOnClickListener{
+            val intent = Intent(this@MainActivity, ReceitasListaActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
+        }
+
+        biding.despesasValue.setOnClickListener{
+            Toast.makeText(this@MainActivity, "Deu na despesas", Toast.LENGTH_SHORT).show()
         }
 
     }

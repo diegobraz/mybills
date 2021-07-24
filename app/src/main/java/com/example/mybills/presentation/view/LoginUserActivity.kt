@@ -67,7 +67,6 @@ class LoginUserActivity : AppCompatActivity() {
         }
 
     }
-
     private fun validation(): Boolean {
         var validation = true
         if ( biding.txtEmail.text.isNullOrEmpty()){
