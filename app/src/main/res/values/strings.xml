@@ -13,6 +13,7 @@
     <string name="email_login">Email</string>
     <string name="password_login">Password</string>
     <string name="login_btn">Login</string>
+    <string name="salvar_btn">Salvar</string>
     <string name="registre_screm">Registre screm</string>
     <string name="registrer_btn">Registrer</string>
     <string name="registra_login">Registra-se</string>
@@ -21,8 +22,10 @@
     <string name="txt_receitas">Receitas</string>
     <string name="txt_despesas">Despesas</string>
     <string name="valor_da_despesas">valor da Despesas</string>
-    <string name="valor_da_despesa">Valor da despesa</string>
+    <string name="valor_da_despesa">Valor da Despesa</string>
     <string name="descrição">descrição</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="valor_da_receita">Valor da Receita</string>
+    <string name="empty_data">00/00/000</string>
+    <string name="txt_recebido">Recebido</string>
+    <string name="txt_pago">Pago</string>
 </resources>
