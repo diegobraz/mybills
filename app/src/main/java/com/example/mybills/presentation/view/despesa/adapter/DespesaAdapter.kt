@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mybills.databinding.ItemReceitasCardBinding
 import com.example.mybills.domain.Despesa
+import com.example.mybills.ultis.FormatesTypes
 
 
 class DespesaAdapter: ListAdapter<Despesa, DespesaAdapter.viewHolder>(DiffCallback()) {
@@ -30,7 +31,7 @@ class DespesaAdapter: ListAdapter<Despesa, DespesaAdapter.viewHolder>(DiffCallba
         private val binding: ItemReceitasCardBinding
     ): RecyclerView.ViewHolder(binding.root){
         fun bind(item : Despesa){
-            binding.txtValue.text = item.valor.toString()
+            binding.txtValue.text = FormatesTypes.formatMoney(item.valor)
             binding.txtData.text = item.data
 
         }
@@ -41,7 +42,6 @@ class DespesaAdapter: ListAdapter<Despesa, DespesaAdapter.viewHolder>(DiffCallba
         override fun areItemsTheSame(oldItem: Despesa, newItem: Despesa) = oldItem == newItem
 
         override fun areContentsTheSame(oldItem: Despesa, newItem: Despesa) = oldItem.id == newItem.id
-
 
     }
 

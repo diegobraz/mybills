@@ -1,5 +1,6 @@
 package com.example.mybills.presentation.view.despesa.viewModel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.mybills.domain.Despesa
@@ -10,6 +11,11 @@ class AddDespesaViewModel( private val  despesaRepositorie: DespesaRepositorie):
     fun insert(despesa:Despesa){
        despesaRepositorie.insert(despesa)
     }
+
+    fun getAll(): LiveData<List<Despesa>> {
+        return despesaRepositorie.getAll()
+    }
+
 }
 
 
