@@ -1,13 +1,13 @@
 package com.example.mybills.presentation.view.receitas.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mybills.databinding.ItemReceitasCardBinding
 import com.example.mybills.domain.Receita
+import java.text.NumberFormat
 
 class ReceitasAdapter: ListAdapter<Receita, ReceitasAdapter.viewHolder>(DiffCallback()) {
 
@@ -29,7 +29,7 @@ class ReceitasAdapter: ListAdapter<Receita, ReceitasAdapter.viewHolder>(DiffCall
         private val binding: ItemReceitasCardBinding
     ): RecyclerView.ViewHolder(binding.root){
         fun bind(item : Receita){
-            binding.txtValue.text = item.valor.toString()
+            binding.txtValue.text = NumberFormat.getCurrencyInstance().format((item.valor/100))
             binding.txtData.text = item.data
 
         }

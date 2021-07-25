@@ -30,6 +30,10 @@ object FormatesTypes {
         return value?.let { integerFormatter.format(it) } ?: ""
     }
 
+    fun format(value : Double?) : String {
+        return if(value != null) decimalFormatter.format(value) else ""
+    }
+
 
     fun formatMoney(value : Double?) : String {
         return if(value != null) moneyFormatter.format(value) else ""

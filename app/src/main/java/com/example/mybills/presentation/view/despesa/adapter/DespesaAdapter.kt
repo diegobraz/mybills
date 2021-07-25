@@ -10,6 +10,7 @@ import com.example.mybills.databinding.ItemDespesaCardBinding
 import com.example.mybills.databinding.ItemReceitasCardBinding
 import com.example.mybills.domain.Despesa
 import com.example.mybills.ultis.FormatesTypes
+import java.text.NumberFormat
 
 
 class DespesaAdapter: ListAdapter<Despesa, DespesaAdapter.viewHolder>(DiffCallback()) {
@@ -32,7 +33,7 @@ class DespesaAdapter: ListAdapter<Despesa, DespesaAdapter.viewHolder>(DiffCallba
         private val binding: ItemDespesaCardBinding
     ): RecyclerView.ViewHolder(binding.root){
         fun bind(item : Despesa){
-            binding.txtValue.text = FormatesTypes.formatMoney(item.valor)
+            binding.txtValue.text = NumberFormat.getCurrencyInstance().format((item.valor/100))
             binding.txtData.text = item.data
 
         }

@@ -45,7 +45,9 @@ class AddDespesasActivity : AppCompatActivity() {
                     data = biding.txtData.text.toString(),
                     pago = biding.switchReceita.isChecked
                 )
+
             viewModel.insert(despesa)
+
                 Toast.makeText(this, "Despesa Salva com sucesso", Toast.LENGTH_SHORT).show()
                 Log.d("diegoLog","${despesa}")
                 val intent = Intent(this, MainActivity::class.java)
