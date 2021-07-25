@@ -11,9 +11,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MyBills">
-        <activity android:name=".presentation.view.receitas.ReceitasListaActivity"></activity>
-        <activity android:name=".presentation.view.receitas.AddReceitasActivity"></activity>
-        <activity android:name=".presentation.view.AddDespesasActivity" />
+        <activity android:name=".presentation.view.receitas.ReceitasListaActivity" />
+        <activity android:name=".presentation.view.receitas.AddReceitaActivity" />
+        <activity android:name=".presentation.view.despesa.AddDespesasActivity" />
         <activity android:name=".presentation.view.RegistratioActivity" />
         <activity android:name=".presentation.view.LoginUserActivity">
             <intent-filter>

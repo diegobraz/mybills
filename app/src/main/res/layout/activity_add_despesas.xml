@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.view.receitas.AddReceitasActivity">
+    tools:context=".presentation.view.receitas.AddReceitaActivity">
 
 
     <TextView
-        android:id="@+id/label_Valor_recita"
+        android:id="@+id/label_Valor_despesa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/valor_da_despesa"
@@ -20,88 +20,106 @@
         app:layout_constraintTop_toTopOf="parent"
         android:layout_marginLeft="8dp" />
 
-    <EditText
-        android:id="@+id/et_valor_receita"
+<!--    <EditText-->
+<!--        android:id="@+id/et_valor_receita"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:inputType="number"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:layout_marginStart="8dp"-->
+<!--        android:layout_marginEnd="8dp"-->
+<!--        android:textSize="32sp"-->
+<!--        android:hint="@string/valor_empity"-->
+<!--        android:digits="0123456789,."-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/label_Valor_recita" />-->
+<!--    -->
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/et_valor_despesa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        android:layout_marginTop="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
-        android:textSize="32sp"
-        android:hint="@string/valor_empity"
         android:digits="0123456789,."
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/label_Valor_recita" />
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/description_receita"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:hint="@string/descrição"
+        android:hint="@string/valor_empity"
+        android:inputType="numberDecimal"
+        android:textSize="32sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_valor_receita">
+        app:layout_constraintTop_toBottomOf="@+id/label_Valor_despesa"
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txt_description"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="text" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/data_receita"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="8dp"
-        android:hint="@string/empty_data"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/description_receita">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txt_data"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:inputType="date" />
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <com.google.android.material.switchmaterial.SwitchMaterial
-        android:id="@+id/switch_receita"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="@string/txt_pago"
-        android:layout_margin="8dp"
-        android:textSize="18sp"
-        android:paddingStart="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/data_receita"
-        android:checked="true"
-        android:paddingLeft="16dp" />
-
-
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_confirmar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="16dp"
-        android:text="@string/salvar_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
         />
 
 
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/description_despesa"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="@string/descrição"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/et_valor_despesa">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_description"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="text" />
+
+        </com.google.android.material.textfield.TextInputLayout>
 
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/data_despesa"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:hint="@string/empty_data"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/description_despesa">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/txt_data"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:inputType="date" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switch_receita"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/txt_pago"
+            android:layout_margin="8dp"
+            android:textSize="18sp"
+            android:paddingStart="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/data_despesa"
+            android:checked="true"
+            android:paddingLeft="16dp" />
+
+
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_confirmar"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:text="@string/salvar_btn"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
