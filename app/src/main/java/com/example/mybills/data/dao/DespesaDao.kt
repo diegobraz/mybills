@@ -22,4 +22,6 @@ suspend fun update(despesa: Despesa)
 @Query("DELETE FROM Despesa WHERE id LIKE :id_" )
 fun delete(id_:Int)
 
+@Query("SELECT SUM(valor)  FROM Despesa")
+fun getSum(): LiveData<Double>
 }

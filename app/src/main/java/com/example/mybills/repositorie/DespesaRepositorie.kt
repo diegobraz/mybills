@@ -28,5 +28,8 @@ class DespesaRepositorie(private val despesaDao: DespesaDao) {
     }
 
 
+    fun getSum() = despesaDao.getSum()
+
+
 
 }

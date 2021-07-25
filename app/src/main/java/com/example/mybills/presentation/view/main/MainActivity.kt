@@ -3,6 +3,7 @@ package com.example.mybills.presentation.view.main
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
@@ -12,18 +13,19 @@ import com.example.mybills.R
 import com.example.mybills.databinding.ActivityMainBinding
 import com.example.mybills.presentation.view.despesa.AddDespesasActivity
 import com.example.mybills.presentation.view.despesa.DespesasListaActivity
-import com.example.mybills.presentation.view.despesa.viewModel.AddDespesaViewModel
-import com.example.mybills.presentation.view.despesa.viewModel.DespesaViewModelFactory
 import com.example.mybills.presentation.view.main.viewModel.MainViewModel
 import com.example.mybills.presentation.view.main.viewModel.MainViewModelFactory
 import com.example.mybills.presentation.view.receitas.AddReceitaActivity
 import com.example.mybills.presentation.view.receitas.ReceitasListaActivity
+import java.text.NumberFormat
 
 
 class MainActivity : AppCompatActivity() {
 
     private val biding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     private  var click = false
+    private var receitaTotal = 0.0
+    private var despesaTotal = 0.0
 
     private val rotateAnimation by lazy { AnimationUtils.loadAnimation(this, R.anim.rotate_open_anim) }
     private val rotateclose by lazy { AnimationUtils.loadAnimation(this, R.anim.rotate_close_anim) }
@@ -42,11 +44,22 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(biding.root)
         loadClicks()
-//        loadValues()
+        loadValues()
     }
 
     private fun loadValues() {
-        TODO("Not yet implemented")
+        viewModel.getSumReceita().observe(this,{ receitaSum ->
+
+            Log.d("sum","${receitaSum}")
+            biding.receitaValue.setText(NumberFormat.getCurrencyInstance().format((receitaSum/100)))
+            receitaTotal = receitaSum
+        })
+
+        viewModel.getSumDespesa().observe(this,{ sumDespesa ->
+            biding.despesasValue.setText(NumberFormat.getCurrencyInstance().format((sumDespesa/100)))
+            despesaTotal = sumDespesa
+        })
+
     }
 
     private fun loadClicks() {

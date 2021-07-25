@@ -28,10 +28,9 @@ class ReceitasListaActivity : AppCompatActivity() {
         setContentView(biding.root)
         biding.rvReceittas.adapter = adapter
         viewModel.getAll().observe(this,{ receitaList ->
-
             adapter.submitList(receitaList)
-
         })
+
 
     }
 

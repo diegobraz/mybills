@@ -1,5 +1,6 @@
 package com.example.mybills.presentation.view.main.viewModel
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.example.mybills.domain.Receita
@@ -11,6 +12,16 @@ class MainViewModel(
     private val receitaRepositorie: ReceitaRepositorie,
     private val  despesaRepositorie: DespesaRepositorie
     ) : ViewModel() {
+
+    fun getSumReceita(): LiveData<Double> {
+        return receitaRepositorie.getSum()
+    }
+
+    fun getSumDespesa():LiveData<Double>{
+        return despesaRepositorie.getSum()
+    }
+
+
 
 
 }

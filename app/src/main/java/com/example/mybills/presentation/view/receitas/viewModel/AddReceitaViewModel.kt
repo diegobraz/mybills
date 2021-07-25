@@ -19,7 +19,6 @@ class AddReceitaViewMode(private val receitaRepositorie: ReceitaRepositorie):Vie
         return receitaRepositorie.getAll()
     }
 
-
 }
 
 @Suppress("UNCHECKED_CAST")

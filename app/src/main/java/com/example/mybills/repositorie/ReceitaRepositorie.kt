@@ -27,5 +27,7 @@ class ReceitaRepositorie(private val receitaDao: ReceitaDao) {
         receitaDao.delete(id)
     }
 
+    fun getSum() = receitaDao.getSum()
+
 
 }
