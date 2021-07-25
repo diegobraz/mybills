@@ -1,20 +1,19 @@
 package com.example.mybills.presentation.view.receitas
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.example.mybills.DataAplication
 import com.example.mybills.databinding.ActivityReceitasBinding
 import com.example.mybills.domain.Receita
-import com.example.mybills.presentation.view.despesa.viewModel.DespesaViewModelFactory
 import com.example.mybills.presentation.view.main.MainActivity
 import com.example.mybills.presentation.view.receitas.viewModel.AddReceitaViewMode
 import com.example.mybills.presentation.view.receitas.viewModel.ReceitaViewModelFactory
 import java.text.NumberFormat
-
+import java.util.*
 
 
 class AddReceitaActivity : AppCompatActivity() {
@@ -95,6 +94,57 @@ class AddReceitaActivity : AppCompatActivity() {
                     biding.etValorReceita.addTextChangedListener(this)
                 }
             }
+        })
+
+
+        biding.txtData.addTextChangedListener(object : TextWatcher {
+            private var current = ""
+            private val ddmmyyyy = "DDMMAAAA"
+            private val cal = Calendar.getInstance()
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+                if (s.toString() != current) {
+                    var clean = s.toString().replace("[^\\d.]".toRegex(), "")
+                    val cleanC = current.replace("[^\\d.]".toRegex(), "")
+                    val cl = clean.length
+                    var sel = cl
+                    var i = 2
+                    while (i <= cl && i < 6) {
+                        sel++
+                        i += 2
+                    }
+
+                    if (clean == cleanC) sel--
+                    if (clean.length < 8) {
+                        clean += ddmmyyyy.substring(clean.length)
+                    } else {
+
+                        var day = clean.substring(0, 2).toInt()
+                        var mon = clean.substring(2, 4).toInt()
+                        var year = clean.substring(4, 8).toInt()
+                        if (mon > 12) mon = 12
+                        cal[Calendar.MONTH] = mon - 1
+                        year = if (year < 1900) 1900 else if (year > 2100) 2100 else year
+                        cal[Calendar.YEAR] = year
+
+                        day = if (day > cal.getActualMaximum(Calendar.DATE)) cal.getActualMaximum(
+                            Calendar.DATE
+                        ) else day
+                        clean = String.format("%02d%02d%02d", day, mon, year)
+                    }
+                    clean = String.format(
+                        "%s/%s/%s", clean.substring(0, 2),
+                        clean.substring(2, 4),
+                        clean.substring(4, 8)
+                    )
+                    sel = if (sel < 0) 0 else sel
+                    current = clean
+                    biding.txtData.setText(current)
+                    biding.txtData.setSelection(if (sel < current.length) sel else current.length)
+                }
+            }
+
+            override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
+            override fun afterTextChanged(s: Editable) {}
         })
     }
 

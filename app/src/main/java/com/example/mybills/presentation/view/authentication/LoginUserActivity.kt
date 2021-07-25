@@ -14,7 +14,6 @@ import com.google.firebase.auth.FirebaseUser
 class LoginUserActivity : AppCompatActivity() {
 
     private val biding by lazy { ActivityLoginUserBinding.inflate(layoutInflater) }
-    private var auth : FirebaseAuth? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
