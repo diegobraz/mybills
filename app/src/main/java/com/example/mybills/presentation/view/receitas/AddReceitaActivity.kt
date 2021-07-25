@@ -2,6 +2,8 @@ package com.example.mybills.presentation.view.receitas
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.widget.Toast
 import com.example.mybills.R
 import com.example.mybills.databinding.ActivityReceitasBinding
@@ -11,6 +13,7 @@ import com.example.mybills.domain.Receita
 import com.example.mybills.presentation.view.MainActivity
 import com.example.mybills.presentation.view.despesa.viewModel.AddDespesaViewModel
 import com.example.mybills.presentation.view.receitas.viewModel.AddReceitaViewMode
+import java.text.NumberFormat
 import javax.inject.Inject
 
 
@@ -64,6 +67,33 @@ class AddReceitaActivity : AppCompatActivity() {
             validation = false
         }
         return validation
+    }
+
+    override fun onResume() {
+        super.onResume()
+        biding.etValorReceita.addTextChangedListener(object : TextWatcher {
+            private  var dinheiro =""
+
+            override fun afterTextChanged(s: Editable?) {}
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                if (s.toString() != dinheiro) {
+                    biding.etValorReceita.removeTextChangedListener(this)
+
+                    val cleanString: String = s!!.replace("""[R$,.]""".toRegex(), "").trim()
+
+                    val parsed = cleanString.toDouble()
+
+                    val formatted = NumberFormat.getCurrencyInstance().format((parsed/100))
+
+                    dinheiro = formatted
+
+                    biding.etValorReceita.setText(formatted)
+                    biding.etValorReceita.setSelection(formatted.length)
+                    biding.etValorReceita.addTextChangedListener(this)
+                }
+            }
+        })
     }
 
 }
