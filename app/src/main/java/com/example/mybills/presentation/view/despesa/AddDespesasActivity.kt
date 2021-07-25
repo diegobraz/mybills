@@ -30,6 +30,7 @@ class AddDespesasActivity : AppCompatActivity() {
 
 
     private fun loadClicks() {
+
         biding.btnConfirmar.setOnClickListener{
             if (validation()){
                 val value = biding.etValorDespesa.text?.replace("""[R$,.]""".toRegex(), "")?.trim()!!.toDouble()
@@ -45,6 +46,9 @@ class AddDespesasActivity : AppCompatActivity() {
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
             }
+        }
+        biding.closeBtn.setOnClickListener {
+            onBackPressed()
         }
     }
 

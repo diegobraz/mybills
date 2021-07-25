@@ -21,9 +21,7 @@ class RegistratioActivity : AppCompatActivity() {
     }
     private fun loadListener() {
         biding.closeBtn.setOnClickListener {
-            val intent = Intent(this@RegistratioActivity, LoginUserActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-            startActivity(intent)
+           onBackPressed()
         }
 
         biding.btnRegistre.setOnClickListener{

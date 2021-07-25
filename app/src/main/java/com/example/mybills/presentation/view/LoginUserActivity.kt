@@ -26,7 +26,6 @@ class LoginUserActivity : AppCompatActivity() {
 
         biding.registrarUser.setOnClickListener {
             val intent = Intent(this@LoginUserActivity, RegistratioActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
 

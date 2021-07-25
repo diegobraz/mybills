@@ -43,21 +43,18 @@ class MainActivity : AppCompatActivity() {
         }
         biding.floatingReceitasButton.setOnClickListener {
             val intent = Intent(this, AddReceitaActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
 
         }
 
         biding.floatingDespesasButton.setOnClickListener {
             val intent = Intent(this@MainActivity, AddDespesasActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
 
         }
 
         biding.receitaValue.setOnClickListener {
             val intent = Intent(this@MainActivity, ReceitasListaActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
 
