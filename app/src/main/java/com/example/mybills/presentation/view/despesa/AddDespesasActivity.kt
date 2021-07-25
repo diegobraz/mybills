@@ -13,7 +13,7 @@ import com.example.mybills.databinding.ActivityAddDespesasBinding
 import com.example.mybills.domain.Despesa
 import com.example.mybills.presentation.view.main.MainActivity
 import com.example.mybills.presentation.view.despesa.viewModel.AddDespesaViewModel
-import com.example.mybills.presentation.view.despesa.viewModel.ViewModelFactory
+import com.example.mybills.presentation.view.despesa.viewModel.DespesaViewModelFactory
 import java.text.NumberFormat
 
 class AddDespesasActivity : AppCompatActivity() {
@@ -22,7 +22,7 @@ class AddDespesasActivity : AppCompatActivity() {
 
 
     private val viewModel by lazy {
-        ViewModelProvider(this, ViewModelFactory((application as DataAplication).despesaRepositori))
+        ViewModelProvider(this, DespesaViewModelFactory((application as DataAplication).despesaRepositori))
             .get(AddDespesaViewModel::class.java)
     }
     

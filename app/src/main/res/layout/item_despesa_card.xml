@@ -29,6 +29,8 @@
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
                 android:textSize="18sp"
+                android:text="@string/valor_da_despesa"
+                android:textColor="@color/despesas_color"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Valor Despesa" />

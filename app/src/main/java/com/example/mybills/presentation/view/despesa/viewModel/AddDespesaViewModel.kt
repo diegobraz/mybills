@@ -20,7 +20,7 @@ class AddDespesaViewModel( private val  despesaRepositorie: DespesaRepositorie):
 
 
 @Suppress("UNCHECKED_CAST")
-class ViewModelFactory(private val despesaRepositorie: DespesaRepositorie): ViewModelProvider.Factory {
+class DespesaViewModelFactory(private val despesaRepositorie: DespesaRepositorie): ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return AddDespesaViewModel(despesaRepositorie = despesaRepositorie) as T
     }

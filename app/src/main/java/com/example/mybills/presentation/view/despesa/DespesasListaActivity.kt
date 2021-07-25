@@ -8,12 +8,12 @@ import com.example.mybills.DataAplication
 import com.example.mybills.databinding.ActivityDespesasListaBinding
 import com.example.mybills.presentation.view.despesa.adapter.DespesaAdapter
 import com.example.mybills.presentation.view.despesa.viewModel.AddDespesaViewModel
-import com.example.mybills.presentation.view.despesa.viewModel.ViewModelFactory
+import com.example.mybills.presentation.view.despesa.viewModel.DespesaViewModelFactory
 
 class DespesasListaActivity : AppCompatActivity() {
 
     private val viewModel by lazy {
-        ViewModelProvider(this, ViewModelFactory((application as DataAplication).despesaRepositori))
+        ViewModelProvider(this, DespesaViewModelFactory((application as DataAplication).despesaRepositori))
             .get(AddDespesaViewModel::class.java)
     }
 

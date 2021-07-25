@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mybills.databinding.ItemDespesaCardBinding
 import com.example.mybills.databinding.ItemReceitasCardBinding
 import com.example.mybills.domain.Despesa
 import com.example.mybills.ultis.FormatesTypes
@@ -15,7 +16,7 @@ class DespesaAdapter: ListAdapter<Despesa, DespesaAdapter.viewHolder>(DiffCallba
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
         val inflater = LayoutInflater.from(parent.context)
-        val binding = ItemReceitasCardBinding.inflate(inflater, parent, false)
+        val binding = ItemDespesaCardBinding.inflate(inflater, parent, false)
 
         return viewHolder(binding)
     }
@@ -28,7 +29,7 @@ class DespesaAdapter: ListAdapter<Despesa, DespesaAdapter.viewHolder>(DiffCallba
 
 
     inner class viewHolder(
-        private val binding: ItemReceitasCardBinding
+        private val binding: ItemDespesaCardBinding
     ): RecyclerView.ViewHolder(binding.root){
         fun bind(item : Despesa){
             binding.txtValue.text = FormatesTypes.formatMoney(item.valor)

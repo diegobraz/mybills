@@ -28,12 +28,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textStyle="bold"
-                android:text="@string/valor_da_despesa"
-                android:textColor="@color/despesas_color"
+                android:text="@string/valor_da_receita"
+                android:textColor="@color/receita_color"
                 android:textSize="18sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:text="Valor Despesa" />
+                tools:text="Valor Receita" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/txt_value"

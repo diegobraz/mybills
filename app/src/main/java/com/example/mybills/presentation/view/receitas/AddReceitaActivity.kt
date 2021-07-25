@@ -5,24 +5,26 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.widget.Toast
-import com.example.mybills.R
+import androidx.lifecycle.ViewModelProvider
+import com.example.mybills.DataAplication
 import com.example.mybills.databinding.ActivityReceitasBinding
-import com.example.mybills.databinding.ActivityRegistratioBinding
-import com.example.mybills.domain.Despesa
 import com.example.mybills.domain.Receita
-import com.example.mybills.presentation.view.despesa.viewModel.AddDespesaViewModel
+import com.example.mybills.presentation.view.despesa.viewModel.DespesaViewModelFactory
 import com.example.mybills.presentation.view.main.MainActivity
 import com.example.mybills.presentation.view.receitas.viewModel.AddReceitaViewMode
+import com.example.mybills.presentation.view.receitas.viewModel.ReceitaViewModelFactory
 import java.text.NumberFormat
-import javax.inject.Inject
+
 
 
 class AddReceitaActivity : AppCompatActivity() {
 
     private val biding by lazy { ActivityReceitasBinding.inflate(layoutInflater) }
 
-    @Inject
-    lateinit var viewModel: AddReceitaViewMode
+    private val viewModel by lazy {
+        ViewModelProvider(this, ReceitaViewModelFactory((application as DataAplication).receitaRepositori))
+            .get(AddReceitaViewMode::class.java)
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
