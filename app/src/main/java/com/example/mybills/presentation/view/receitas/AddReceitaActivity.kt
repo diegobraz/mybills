@@ -10,8 +10,8 @@ import com.example.mybills.databinding.ActivityReceitasBinding
 import com.example.mybills.databinding.ActivityRegistratioBinding
 import com.example.mybills.domain.Despesa
 import com.example.mybills.domain.Receita
-import com.example.mybills.presentation.view.MainActivity
 import com.example.mybills.presentation.view.despesa.viewModel.AddDespesaViewModel
+import com.example.mybills.presentation.view.main.MainActivity
 import com.example.mybills.presentation.view.receitas.viewModel.AddReceitaViewMode
 import java.text.NumberFormat
 import javax.inject.Inject
@@ -38,7 +38,7 @@ class AddReceitaActivity : AppCompatActivity() {
                 val reseita = Receita(
                     valor = value,
                     decricao = biding.txtDescription.text.toString(),
-                    data = biding.txtData.toString(),
+                    data = biding.txtData.text.toString(),
                     Recebido = biding.switchReceita.isChecked
                 )
                 viewModel.insert(reseita)

@@ -1,10 +1,11 @@
-package com.example.mybills.presentation.view
+package com.example.mybills.presentation.view.authentication
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.mybills.databinding.ActivityRegistratioBinding
+import com.example.mybills.presentation.view.main.MainActivity
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -39,7 +40,7 @@ class RegistratioActivity : AppCompatActivity() {
                                 Toast.makeText(this@RegistratioActivity,
                                     "Registrado com sucesso",
                                     Toast.LENGTH_SHORT).show()
-                                val intent = Intent(this@RegistratioActivity,MainActivity::class.java)
+                                val intent = Intent(this@RegistratioActivity, MainActivity::class.java)
                                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                                 intent.putExtra("user_id",FirebaseUser.uid)
                                 intent.putExtra("email_id",email)

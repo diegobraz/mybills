@@ -1,7 +1,7 @@
 package com.example.mybills.di
 
 import android.content.Context
-import com.example.mybills.presentation.viewModel.ViewModelFactory
+import com.example.mybills.presentation.view.ViewModelFactory
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -13,6 +13,8 @@ interface ApplicationComponent {
     @Component.Factory
     interface Factory{
         fun create(@BindsInstance applicationContext: Context): ApplicationComponent
+
+
     }
 
 }

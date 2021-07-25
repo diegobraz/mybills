@@ -2,11 +2,8 @@ package com.example.mybills.presentation.view.receitas
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.mybills.databinding.ActivityMainBinding
-import com.example.mybills.databinding.ActivityReceitasBinding
 import com.example.mybills.databinding.ActivityReceitasListaBinding
-import com.example.mybills.domain.Receita
-import com.example.mybills.presentation.adapter.ReceitasAdapter
+import com.example.mybills.presentation.view.receitas.adapter.ReceitasAdapter
 
 class ReceitasListaActivity : AppCompatActivity() {
 

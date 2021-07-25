@@ -20,7 +20,7 @@ class ReceitaRepositorie(private val receitaDao: ReceitaDao) {
         }
     }
 
-    fun getAl() = receitaDao.getAll()
+    fun getAll() = receitaDao.getAll()
 
 
     fun delete(id:Int){

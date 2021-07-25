@@ -3,7 +3,7 @@ package com.example.mybills.presentation.view.despesa
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.mybills.databinding.ActivityDespesasListaBinding
-import com.example.mybills.presentation.adapter.DespesaAdapter
+import com.example.mybills.presentation.view.despesa.adapter.DespesaAdapter
 
 class DespesasListaActivity : AppCompatActivity() {
 
@@ -16,9 +16,6 @@ class DespesasListaActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(biding.root)
-
-
-
 
     }
 }

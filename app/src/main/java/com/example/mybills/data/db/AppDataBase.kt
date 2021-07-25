@@ -24,7 +24,7 @@ abstract class AppDataBase : RoomDatabase() {
                 val intance = Room.databaseBuilder(
                     context.applicationContext,
                     AppDataBase::class.java,
-                    "businesscard_db"
+                    "bills_bank"
                 ).build()
                 INSTANCE = intance
                 intance

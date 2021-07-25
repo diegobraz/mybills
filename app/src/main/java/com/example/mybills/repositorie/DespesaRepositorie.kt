@@ -20,7 +20,7 @@ class DespesaRepositorie(private val despesaDao: DespesaDao) {
         }
     }
 
-    fun getAl() = despesaDao.getAll()
+    fun getAll() = despesaDao.getAll()
 
 
     fun delete(id:Int){

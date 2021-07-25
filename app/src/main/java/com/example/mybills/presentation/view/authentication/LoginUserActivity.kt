@@ -1,15 +1,15 @@
-package com.example.mybills.presentation.view
+package com.example.mybills.presentation.view.authentication
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.example.mybills.databinding.ActivityLoginUserBinding
+import com.example.mybills.presentation.view.main.MainActivity
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.ktx.Firebase
 
 class LoginUserActivity : AppCompatActivity() {
 

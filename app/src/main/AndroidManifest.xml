@@ -15,15 +15,15 @@
         <activity android:name=".presentation.view.receitas.ReceitasListaActivity" />
         <activity android:name=".presentation.view.receitas.AddReceitaActivity" />
         <activity android:name=".presentation.view.despesa.AddDespesasActivity" />
-        <activity android:name=".presentation.view.RegistratioActivity" />
-        <activity android:name=".presentation.view.LoginUserActivity">
+        <activity android:name=".presentation.view.authentication.RegistratioActivity" />
+        <activity android:name=".presentation.view.authentication.LoginUserActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.view.MainActivity"></activity>
+        <activity android:name=".presentation.view.main.MainActivity"></activity>
     </application>
 
 </manifest>

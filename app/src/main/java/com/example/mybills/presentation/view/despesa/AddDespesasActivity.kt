@@ -5,21 +5,26 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
+import com.example.mybills.DataAplication
 import com.example.mybills.databinding.ActivityAddDespesasBinding
 import com.example.mybills.domain.Despesa
-import com.example.mybills.presentation.view.MainActivity
+import com.example.mybills.presentation.view.main.MainActivity
 import com.example.mybills.presentation.view.despesa.viewModel.AddDespesaViewModel
+import com.example.mybills.presentation.view.despesa.viewModel.ViewModelFactory
 import java.text.NumberFormat
-import javax.inject.Inject
 
 class AddDespesasActivity : AppCompatActivity() {
 
     private val biding by lazy { ActivityAddDespesasBinding.inflate(layoutInflater) }
 
-    @Inject
-    lateinit var viewModel: AddDespesaViewModel
-    
+
+    private val viewModel by lazy {
+        ViewModelProvider(this, ViewModelFactory((application as DataAplication).despesaRepositori))
+            .get(AddDespesaViewModel::class.java)
+    }
     
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,11 +42,12 @@ class AddDespesasActivity : AppCompatActivity() {
                 val despesa = Despesa(
                     valor = value,
                     decricao = biding.txtDescription.text.toString(),
-                    data = biding.txtData.toString(),
+                    data = biding.txtData.text.toString(),
                     pago = biding.switchReceita.isChecked
                 )
             viewModel.insert(despesa)
                 Toast.makeText(this, "Despesa Salva com sucesso", Toast.LENGTH_SHORT).show()
+                Log.d("diegoLog","${despesa}")
                 val intent = Intent(this, MainActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)

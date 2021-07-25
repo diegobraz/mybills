@@ -1,15 +1,15 @@
-package com.example.mybills.presentation.view
+package com.example.mybills.presentation.view.main
 
 
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.view.animation.AnimationUtils
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mybills.R
 import com.example.mybills.databinding.ActivityMainBinding
 import com.example.mybills.presentation.view.despesa.AddDespesasActivity
+import com.example.mybills.presentation.view.despesa.DespesasListaActivity
 import com.example.mybills.presentation.view.receitas.AddReceitaActivity
 import com.example.mybills.presentation.view.receitas.ReceitasListaActivity
 
@@ -59,7 +59,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         biding.despesasValue.setOnClickListener {
-            Toast.makeText(this@MainActivity, "Deu na despesas", Toast.LENGTH_SHORT).show()
+            val intent = Intent(this@MainActivity, DespesasListaActivity::class.java)
+            startActivity(intent)
         }
     }
 

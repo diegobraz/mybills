@@ -1,4 +1,4 @@
-package com.example.mybills.presentation.viewModel
+package com.example.mybills.presentation.view.main.viewModel
 
 import androidx.lifecycle.ViewModel
 import com.example.mybills.domain.Receita
