@@ -23,10 +23,11 @@ class DespesaRepositorie(private val despesaDao: DespesaDao) {
     fun getAll() = despesaDao.getAll()
 
 
-    fun delete(id:Int){
-        despesaDao.delete(id)
+    fun delete(id: Int) = runBlocking {
+        launch(Dispatchers.IO) {
+            despesaDao.delete(id)
+        }
     }
-
 
     fun getSum() = despesaDao.getSum()
 

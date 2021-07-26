@@ -20,7 +20,11 @@ class DespesasListaActivity : AppCompatActivity() {
     private val biding by lazy { ActivityDespesasListaBinding.inflate(layoutInflater) }
 
     private val adapter by lazy {
-        DespesaAdapter()
+        DespesaAdapter(
+            onClickDelete ={id ->
+                viewModel.delete(id)
+            }
+        )
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

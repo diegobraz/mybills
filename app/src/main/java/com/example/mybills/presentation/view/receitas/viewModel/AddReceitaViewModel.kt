@@ -19,6 +19,10 @@ class AddReceitaViewMode(private val receitaRepositorie: ReceitaRepositorie):Vie
         return receitaRepositorie.getAll()
     }
 
+    fun delete(id:Int){
+        receitaRepositorie.delete(id)
+    }
+
 }
 
 @Suppress("UNCHECKED_CAST")

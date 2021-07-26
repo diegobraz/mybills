@@ -48,8 +48,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadValues() {
         viewModel.getSumReceita().observe(this,{ receitaSum ->
-
-            Log.d("sum","${receitaSum}")
             valorTota += receitaSum ?: 0.0
             biding.receitaValue.setText(NumberFormat.getCurrencyInstance().format(((receitaSum ?: 0.0) /100)))
             biding.valorConta.setText(NumberFormat.getCurrencyInstance().format((valorTota/100)))

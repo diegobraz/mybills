@@ -14,7 +14,11 @@ class ReceitasListaActivity : AppCompatActivity() {
     private val biding by lazy { ActivityReceitasListaBinding.inflate(layoutInflater) }
 
     private val adapter by lazy {
-        ReceitasAdapter()
+        ReceitasAdapter(
+            onClickDelete ={id ->
+                viewModel.delete(id)
+            }
+        )
     }
 
     private val viewModel by lazy {

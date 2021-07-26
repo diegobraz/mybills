@@ -55,6 +55,17 @@
                 app:layout_constraintTop_toBottomOf="@id/txt_value"
                 tools:text="24/08/2021" />
 
+            <ImageButton
+                android:id="@+id/delete_btn"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="?attr/actionBarItemBackground"
+                android:src="@drawable/ic_delete_black"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                />
+
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

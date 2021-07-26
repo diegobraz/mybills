@@ -16,6 +16,10 @@ class AddDespesaViewModel( private val  despesaRepositorie: DespesaRepositorie):
         return despesaRepositorie.getAll()
     }
 
+    fun delete(id:Int){
+        despesaRepositorie.delete(id)
+    }
+
 }
 
 

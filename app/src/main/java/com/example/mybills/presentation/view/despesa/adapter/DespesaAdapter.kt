@@ -13,7 +13,7 @@ import com.example.mybills.ultis.FormatesTypes
 import java.text.NumberFormat
 
 
-class DespesaAdapter: ListAdapter<Despesa, DespesaAdapter.viewHolder>(DiffCallback()) {
+class DespesaAdapter(val onClickDelete:(id:Int) -> Any ): ListAdapter<Despesa, DespesaAdapter.viewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -35,6 +35,10 @@ class DespesaAdapter: ListAdapter<Despesa, DespesaAdapter.viewHolder>(DiffCallba
         fun bind(item : Despesa){
             binding.txtValue.text = NumberFormat.getCurrencyInstance().format((item.valor/100))
             binding.txtData.text = item.data
+            binding.deleteBtn.setOnClickListener {
+                 onClickDelete(item.id)
+                 notifyDataSetChanged()
+            }
 
         }
     }
