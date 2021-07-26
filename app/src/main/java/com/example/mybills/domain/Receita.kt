@@ -9,7 +9,6 @@ import java.io.Serializable
 data class Receita(
     @PrimaryKey(autoGenerate = true)
     val id: Int = 0,
-    @ColumnInfo(name = "_despesa_value")
     val valor: Double,
     val decricao: String,
     val data: String,

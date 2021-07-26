@@ -19,7 +19,7 @@ interface ReceitaDao {
     @Query("DELETE FROM Receita WHERE id LIKE :id_")
     fun delete(id_: Int)
 
-    @Query("SELECT  SUM(_despesa_value)  FROM Receita")
+    @Query("SELECT  SUM(valor)  FROM Receita")
     fun getSum(): LiveData<Double>
 
 }
