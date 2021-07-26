@@ -10,12 +10,16 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.mybills.DataAplication
 import com.example.mybills.R
 import com.example.mybills.databinding.ActivityMainBinding
+import com.example.mybills.domain.Despesa
+import com.example.mybills.domain.Receita
 import com.example.mybills.presentation.view.despesa.AddDespesasActivity
 import com.example.mybills.presentation.view.despesa.DespesasListaActivity
+import com.example.mybills.presentation.view.despesa.EditDespesaActivity
 import com.example.mybills.presentation.view.despesa.adapter.DespesaAdapter
 import com.example.mybills.presentation.view.main.viewModel.MainViewModel
 import com.example.mybills.presentation.view.main.viewModel.MainViewModelFactory
 import com.example.mybills.presentation.view.receitas.AddReceitaActivity
+import com.example.mybills.presentation.view.receitas.EditReceitaActivity
 import com.example.mybills.presentation.view.receitas.ReceitasListaActivity
 import com.example.mybills.presentation.view.receitas.adapter.ReceitasAdapter
 import java.text.NumberFormat
@@ -43,6 +47,9 @@ class MainActivity : AppCompatActivity() {
         ReceitasAdapter(
             onClickDelete ={id ->
                 viewModel.deleteReceita(id)
+            },
+            onclickUpdadte = { receita ->
+                onCreateUpdateReceita(receita)
             }
         )
     }
@@ -51,6 +58,9 @@ class MainActivity : AppCompatActivity() {
         DespesaAdapter(
             onClickDelete ={id ->
                 viewModel.deleteDespesa(id)
+            },
+            onclickUpdadte = {despesa ->
+                onCreateUpdateDespesa(despesa)
             }
         )
     }
@@ -79,6 +89,36 @@ class MainActivity : AppCompatActivity() {
 
 
     }
+
+    private fun onCreateUpdateReceita(receita: Receita) {
+
+        startActivity(
+            Intent(
+                this,
+                EditReceitaActivity::class.java
+            ).apply {
+                putExtra("receita",receita)
+            }
+        )
+
+
+    }
+
+    private fun onCreateUpdateDespesa(despesa: Despesa) {
+        startActivity(
+            Intent(
+                this,
+                EditDespesaActivity::class.java
+            ).apply {
+                putExtra("despesa",despesa)
+            }
+        )
+
+
+    }
+
+
+
 
     private fun loadValues() {
         viewModel.getSumReceita().observe(this,{ receitaSum ->

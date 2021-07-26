@@ -20,6 +20,10 @@ class AddDespesaViewModel( private val  despesaRepositorie: DespesaRepositorie):
         despesaRepositorie.delete(id)
     }
 
+    fun update(despesa:Despesa){
+        despesaRepositorie.update(despesa)
+    }
+
 }
 
 

@@ -9,7 +9,8 @@ import com.example.mybills.databinding.ItemReceitasCardBinding
 import com.example.mybills.domain.Receita
 import java.text.NumberFormat
 
-class ReceitasAdapter(val onClickDelete:(id:Int) -> Any): ListAdapter<Receita, ReceitasAdapter.viewHolder>(DiffCallback()) {
+class ReceitasAdapter(val onClickDelete:(id:Int) -> Any,
+                      val onclickUpdadte:(receita : Receita) -> Any ): ListAdapter<Receita, ReceitasAdapter.viewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -33,9 +34,11 @@ class ReceitasAdapter(val onClickDelete:(id:Int) -> Any): ListAdapter<Receita, R
             binding.txtData.text = item.data
             binding.deleteBtn.setOnClickListener {
                 onClickDelete(item.id)
-                notifyDataSetChanged()
-            }
 
+            }
+            binding.updateBtn.setOnClickListener {
+                onclickUpdadte(item)
+            }
         }
     }
 

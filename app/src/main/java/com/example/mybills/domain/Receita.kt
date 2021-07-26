@@ -3,6 +3,7 @@ package com.example.mybills.domain
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 import java.math.BigDecimal
 import java.util.*
 
@@ -15,4 +16,4 @@ data class Receita(
     val decricao: String,
     val data: String,
     val Recebido: Boolean
-)
+): Serializable

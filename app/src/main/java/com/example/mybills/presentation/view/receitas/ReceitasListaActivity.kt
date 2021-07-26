@@ -1,10 +1,12 @@
 package com.example.mybills.presentation.view.receitas
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.example.mybills.DataAplication
 import com.example.mybills.databinding.ActivityReceitasListaBinding
+import com.example.mybills.domain.Receita
 import com.example.mybills.presentation.view.receitas.adapter.ReceitasAdapter
 import com.example.mybills.presentation.view.receitas.viewModel.AddReceitaViewMode
 import com.example.mybills.presentation.view.receitas.viewModel.ReceitaViewModelFactory
@@ -17,8 +19,26 @@ class ReceitasListaActivity : AppCompatActivity() {
         ReceitasAdapter(
             onClickDelete ={id ->
                 viewModel.delete(id)
+            },
+            onclickUpdadte = {
+                onCreateUpdate(it)
+            }
+
+        )
+    }
+
+    private fun onCreateUpdate(receita: Receita) {
+
+        startActivity(
+            Intent(
+                this,
+                EditReceitaActivity::class.java
+            ).apply {
+                putExtra("receita",receita)
             }
         )
+
+
     }
 
     private val viewModel by lazy {

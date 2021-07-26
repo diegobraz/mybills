@@ -1,10 +1,7 @@
 package com.example.mybills.data.dao
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.Query
-import androidx.room.Update
+import androidx.room.*
 import com.example.mybills.domain.Despesa
 
 @Dao
@@ -16,7 +13,7 @@ suspend fun insert(despesa: Despesa)
 @Query("SELECT * FROM Despesa")
 fun getAll():LiveData<List<Despesa>>
 
-@Update
+@Update(onConflict =  OnConflictStrategy.REPLACE)
 suspend fun update(despesa: Despesa)
 
 @Query("DELETE FROM Despesa WHERE id LIKE :id_" )

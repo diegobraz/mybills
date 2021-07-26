@@ -3,6 +3,7 @@ package com.example.mybills.domain
 import android.provider.ContactsContract
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import java.io.Serializable
 
 
 @Entity
@@ -13,4 +14,4 @@ data class Despesa(
     val decricao: String,
     val data: String,
     val pago: Boolean
-)
+):Serializable

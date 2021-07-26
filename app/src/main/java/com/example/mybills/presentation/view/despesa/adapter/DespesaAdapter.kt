@@ -9,11 +9,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.mybills.databinding.ItemDespesaCardBinding
 import com.example.mybills.databinding.ItemReceitasCardBinding
 import com.example.mybills.domain.Despesa
+import com.example.mybills.domain.Receita
 import com.example.mybills.ultis.FormatesTypes
 import java.text.NumberFormat
 
 
-class DespesaAdapter(val onClickDelete:(id:Int) -> Any ): ListAdapter<Despesa, DespesaAdapter.viewHolder>(DiffCallback()) {
+class DespesaAdapter(val onClickDelete:(id:Int) -> Any ,
+                     val onclickUpdadte:(despesa: Despesa) -> Any ): ListAdapter<Despesa, DespesaAdapter.viewHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
         val inflater = LayoutInflater.from(parent.context)
@@ -38,6 +40,10 @@ class DespesaAdapter(val onClickDelete:(id:Int) -> Any ): ListAdapter<Despesa, D
             binding.deleteBtn.setOnClickListener {
                  onClickDelete(item.id)
                  notifyDataSetChanged()
+            }
+
+            binding.updateBtn.setOnClickListener {
+                onclickUpdadte(item)
             }
 
         }
