@@ -24,8 +24,7 @@ class MainActivity : AppCompatActivity() {
 
     private val biding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     private  var click = false
-    private var receitaTotal = 0.0
-    private var despesaTotal = 0.0
+    private var valorTota = 0.0
 
     private val rotateAnimation by lazy { AnimationUtils.loadAnimation(this, R.anim.rotate_open_anim) }
     private val rotateclose by lazy { AnimationUtils.loadAnimation(this, R.anim.rotate_close_anim) }
@@ -51,13 +50,17 @@ class MainActivity : AppCompatActivity() {
         viewModel.getSumReceita().observe(this,{ receitaSum ->
 
             Log.d("sum","${receitaSum}")
-            biding.receitaValue.setText(NumberFormat.getCurrencyInstance().format((receitaSum/100)))
-            receitaTotal = receitaSum
+            valorTota += receitaSum ?: 0.0
+            biding.receitaValue.setText(NumberFormat.getCurrencyInstance().format(((receitaSum ?: 0.0) /100)))
+            biding.valorConta.setText(NumberFormat.getCurrencyInstance().format((valorTota/100)))
+
         })
 
         viewModel.getSumDespesa().observe(this,{ sumDespesa ->
-            biding.despesasValue.setText(NumberFormat.getCurrencyInstance().format((sumDespesa/100)))
-            despesaTotal = sumDespesa
+
+            biding.despesasValue.setText(NumberFormat.getCurrencyInstance().format(((sumDespesa ?: 0.0) /100)))
+            valorTota -= sumDespesa ?:0.0
+            biding.valorConta.setText(NumberFormat.getCurrencyInstance().format((valorTota/100)))
         })
 
     }
