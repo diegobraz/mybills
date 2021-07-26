@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import com.example.mybills.domain.Despesa
 import com.example.mybills.domain.Receita
 import com.example.mybills.presentation.view.despesa.viewModel.AddDespesaViewModel
 import com.example.mybills.repositorie.DespesaRepositorie
@@ -42,6 +43,21 @@ class MainViewModel(
     }
 
 
+    fun deleteReceita(id:Int){
+        receitaRepositorie.delete(id)
+    }
+    fun deleteDespesa(id:Int){
+        despesaRepositorie.delete(id)
+    }
+
+
+    fun getAllReceita(): LiveData<List<Receita>> {
+        return receitaRepositorie.getAll()
+    }
+
+    fun getAllDespesa(): LiveData<List<Despesa>> {
+        return despesaRepositorie.getAll()
+    }
 
 
 }

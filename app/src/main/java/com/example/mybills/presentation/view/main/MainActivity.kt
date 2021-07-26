@@ -3,7 +3,6 @@ package com.example.mybills.presentation.view.main
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
@@ -13,10 +12,12 @@ import com.example.mybills.R
 import com.example.mybills.databinding.ActivityMainBinding
 import com.example.mybills.presentation.view.despesa.AddDespesasActivity
 import com.example.mybills.presentation.view.despesa.DespesasListaActivity
+import com.example.mybills.presentation.view.despesa.adapter.DespesaAdapter
 import com.example.mybills.presentation.view.main.viewModel.MainViewModel
 import com.example.mybills.presentation.view.main.viewModel.MainViewModelFactory
 import com.example.mybills.presentation.view.receitas.AddReceitaActivity
 import com.example.mybills.presentation.view.receitas.ReceitasListaActivity
+import com.example.mybills.presentation.view.receitas.adapter.ReceitasAdapter
 import java.text.NumberFormat
 
 
@@ -38,12 +39,45 @@ class MainActivity : AppCompatActivity() {
             .get(MainViewModel::class.java)
     }
 
+    private val receitaAdapter by lazy {
+        ReceitasAdapter(
+            onClickDelete ={id ->
+                viewModel.deleteReceita(id)
+            }
+        )
+    }
+
+    private val despesAdapter by lazy {
+        DespesaAdapter(
+            onClickDelete ={id ->
+                viewModel.deleteDespesa(id)
+            }
+        )
+    }
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(biding.root)
+        biding.receitaCards.adapter = receitaAdapter
+        biding.despesaCards.adapter = despesAdapter
+
         loadClicks()
         loadValues()
+        loadAdpter()
+    }
+
+    private fun loadAdpter() {
+        viewModel.getAllReceita().observe(this,{receitaList ->
+            receitaAdapter.submitList(receitaList)
+        })
+
+        viewModel.getAllDespesa().observe(this,{despesaList ->
+            despesAdapter.submitList(despesaList)
+        })
+
+
     }
 
     private fun loadValues() {
