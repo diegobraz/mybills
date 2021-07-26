@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -14,22 +13,21 @@
         android:layout_height="50dp"
         android:background="?attr/actionBarItemBackground"
         android:src="@drawable/ic_close_black"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/label_Valor_recita"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/valor_da_despesa"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="30dp"
+        android:text="@string/valor_da_despesa"
         android:textSize="22sp"
         android:textStyle="bold"
-        android:layout_marginStart="8dp"
-        app:layout_constraintTop_toBottomOf="@id/close_btn"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginLeft="8dp" />
+        app:layout_constraintTop_toBottomOf="@id/close_btn" />
 
     <!--    <EditText-->
     <!--        android:id="@+id/et_valor_receita"-->
@@ -107,16 +105,15 @@
         android:id="@+id/switch_receita"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/txt_pago"
         android:layout_margin="8dp"
-        android:textSize="18sp"
+        android:checked="true"
         android:paddingStart="16dp"
+        android:paddingLeft="16dp"
+        android:text="@string/txt_pago"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/data_despesa"
-        android:checked="true"
-        android:paddingLeft="16dp" />
-
+        app:layout_constraintTop_toBottomOf="@id/data_despesa" />
 
 
     <com.google.android.material.button.MaterialButton
@@ -125,8 +122,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:text="@string/salvar_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

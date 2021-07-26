@@ -27,10 +27,10 @@
                 android:id="@+id/txt_titulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textSize="18sp"
                 android:text="@string/valor_da_despesa"
                 android:textColor="@color/despesas_color"
+                android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Valor Despesa" />
@@ -61,9 +61,8 @@
                 android:layout_height="50dp"
                 android:background="?attr/actionBarItemBackground"
                 android:src="@drawable/ic_delete_black"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
                 android:id="@+id/update_btn"
@@ -72,10 +71,7 @@
                 android:background="?attr/actionBarItemBackground"
                 android:src="@drawable/ic_edit_black"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                />
-
-
+                app:layout_constraintEnd_toEndOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

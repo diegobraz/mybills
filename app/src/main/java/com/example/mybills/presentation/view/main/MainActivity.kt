@@ -28,24 +28,37 @@ import java.text.NumberFormat
 class MainActivity : AppCompatActivity() {
 
     private val biding by lazy { ActivityMainBinding.inflate(layoutInflater) }
-    private  var click = false
+    private var click = false
     private var valorTota = 0.0
 
-    private val rotateAnimation by lazy { AnimationUtils.loadAnimation(this, R.anim.rotate_open_anim) }
+    private val rotateAnimation by lazy {
+        AnimationUtils.loadAnimation(
+            this,
+            R.anim.rotate_open_anim
+        )
+    }
     private val rotateclose by lazy { AnimationUtils.loadAnimation(this, R.anim.rotate_close_anim) }
-    private val rotateToBottom by lazy { AnimationUtils.loadAnimation(this, R.anim.to_bottom_anim )}
-    private val rotateFromBottom by lazy { AnimationUtils.loadAnimation(this, R.anim.from_bottom_anim )}
+    private val rotateToBottom by lazy { AnimationUtils.loadAnimation(this, R.anim.to_bottom_anim) }
+    private val rotateFromBottom by lazy {
+        AnimationUtils.loadAnimation(
+            this,
+            R.anim.from_bottom_anim
+        )
+    }
 
     private val viewModel by lazy {
-        ViewModelProvider(this, MainViewModelFactory(
-            (application as DataAplication).despesaRepositori,
-            (application as DataAplication).receitaRepositori ))
+        ViewModelProvider(
+            this, MainViewModelFactory(
+                (application as DataAplication).despesaRepositori,
+                (application as DataAplication).receitaRepositori
+            )
+        )
             .get(MainViewModel::class.java)
     }
 
     private val receitaAdapter by lazy {
         ReceitasAdapter(
-            onClickDelete ={id ->
+            onClickDelete = { id ->
                 viewModel.deleteReceita(id)
             },
             onclickUpdadte = { receita ->
@@ -56,15 +69,14 @@ class MainActivity : AppCompatActivity() {
 
     private val despesAdapter by lazy {
         DespesaAdapter(
-            onClickDelete ={id ->
+            onClickDelete = { id ->
                 viewModel.deleteDespesa(id)
             },
-            onclickUpdadte = {despesa ->
+            onclickUpdadte = { despesa ->
                 onCreateUpdateDespesa(despesa)
             }
         )
     }
-
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,11 +91,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun loadAdpter() {
-        viewModel.getAllReceita().observe(this,{receitaList ->
+        viewModel.getAllReceita().observe(this, { receitaList ->
             receitaAdapter.submitList(receitaList)
         })
 
-        viewModel.getAllDespesa().observe(this,{despesaList ->
+        viewModel.getAllDespesa().observe(this, { despesaList ->
             despesAdapter.submitList(despesaList)
         })
 
@@ -97,7 +109,7 @@ class MainActivity : AppCompatActivity() {
                 this,
                 EditReceitaActivity::class.java
             ).apply {
-                putExtra("receita",receita)
+                putExtra("receita", receita)
             }
         )
 
@@ -110,7 +122,7 @@ class MainActivity : AppCompatActivity() {
                 this,
                 EditDespesaActivity::class.java
             ).apply {
-                putExtra("despesa",despesa)
+                putExtra("despesa", despesa)
             }
         )
 
@@ -118,21 +130,23 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-
-
     private fun loadValues() {
-        viewModel.getSumReceita().observe(this,{ receitaSum ->
+        viewModel.getSumReceita().observe(this, { receitaSum ->
             valorTota += receitaSum ?: 0.0
-            biding.receitaValue.setText(NumberFormat.getCurrencyInstance().format(((receitaSum ?: 0.0) /100)))
-            biding.valorConta.setText(NumberFormat.getCurrencyInstance().format((valorTota/100)))
+            biding.receitaValue.setText(
+                NumberFormat.getCurrencyInstance().format(((receitaSum ?: 0.0) / 100))
+            )
+            biding.valorConta.setText(NumberFormat.getCurrencyInstance().format((valorTota / 100)))
 
         })
 
-        viewModel.getSumDespesa().observe(this,{ sumDespesa ->
+        viewModel.getSumDespesa().observe(this, { sumDespesa ->
 
-            biding.despesasValue.setText(NumberFormat.getCurrencyInstance().format(((sumDespesa ?: 0.0) /100)))
-            valorTota -= sumDespesa ?:0.0
-            biding.valorConta.setText(NumberFormat.getCurrencyInstance().format((valorTota/100)))
+            biding.despesasValue.setText(
+                NumberFormat.getCurrencyInstance().format(((sumDespesa ?: 0.0) / 100))
+            )
+            valorTota -= sumDespesa ?: 0.0
+            biding.valorConta.setText(NumberFormat.getCurrencyInstance().format((valorTota / 100)))
         })
 
     }
@@ -175,11 +189,11 @@ class MainActivity : AppCompatActivity() {
 
     private fun setAnimation(clicked: Boolean) {
 
-        if (!clicked){
+        if (!clicked) {
             biding.floatingButtonAdd.startAnimation(rotateAnimation)
             biding.floatingDespesasButton.startAnimation(rotateFromBottom)
             biding.floatingReceitasButton.startAnimation(rotateFromBottom)
-        }else{
+        } else {
             biding.floatingButtonAdd.startAnimation(rotateclose)
             biding.floatingDespesasButton.startAnimation(rotateToBottom)
             biding.floatingReceitasButton.startAnimation(rotateToBottom)
@@ -188,22 +202,22 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun setVisibility(clicked:Boolean) {
-        if (!clicked){
+    private fun setVisibility(clicked: Boolean) {
+        if (!clicked) {
             biding.floatingDespesasButton.visibility = View.VISIBLE
             biding.floatingReceitasButton.visibility = View.VISIBLE
-        }else{
+        } else {
             biding.floatingDespesasButton.visibility = View.INVISIBLE
             biding.floatingReceitasButton.visibility = View.INVISIBLE
         }
     }
 
-    private fun setClickable(clicked: Boolean){
-        if (!clicked){
+    private fun setClickable(clicked: Boolean) {
+        if (!clicked) {
             biding.floatingDespesasButton.isClickable = true
             biding.floatingReceitasButton.isClickable = true
 
-        }else{
+        } else {
             biding.floatingDespesasButton.isClickable = false
             biding.floatingReceitasButton.isClickable = false
         }

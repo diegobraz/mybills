@@ -3,10 +3,7 @@ package com.example.mybills.presentation.view.receitas.viewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.example.mybills.domain.Despesa
 import com.example.mybills.domain.Receita
-import com.example.mybills.presentation.view.despesa.viewModel.AddDespesaViewModel
-import com.example.mybills.repositorie.DespesaRepositorie
 import com.example.mybills.repositorie.ReceitaRepositorie
 
 class AddReceitaViewMode(private val receitaRepositorie: ReceitaRepositorie):ViewModel() {

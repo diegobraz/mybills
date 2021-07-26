@@ -27,10 +27,10 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/txt_valor_saldo"
-                android:textSize="26sp"
-                android:text="@string/txt_saldo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@string/txt_saldo"
+                android:textSize="26sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -52,29 +52,28 @@
                 android:id="@+id/txt_recitas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:textStyle="normal"
+                android:layout_marginStart="26dp"
                 android:layout_marginLeft="22dp"
-                android:textColor="@color/receita_color"
+                android:layout_marginTop="10dp"
                 android:text="@string/txt_receitas"
-                app:layout_constraintTop_toBottomOf="@id/valor_conta"
+                android:textColor="@color/receita_color"
+                android:textStyle="normal"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="26dp" />
+                app:layout_constraintTop_toBottomOf="@id/valor_conta" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/receita_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:textColor="@color/receita_color"
-                android:layout_marginLeft="22dp"
-                android:text="@string/valor_empity"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_recitas"
                 android:layout_marginStart="26dp"
-                />
+                android:layout_marginLeft="22dp"
+                android:layout_marginTop="6dp"
+                android:text="@string/valor_empity"
+                android:textColor="@color/receita_color"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_recitas" />
 
 
             <com.google.android.material.textview.MaterialTextView
@@ -82,27 +81,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
-                android:textStyle="normal"
+                android:layout_marginEnd="26dp"
                 android:layout_marginRight="22dp"
-                android:textColor="@color/despesas_color"
                 android:text="@string/txt_despesas"
-                app:layout_constraintTop_toBottomOf="@id/valor_conta"
+                android:textColor="@color/despesas_color"
+                android:textStyle="normal"
                 app:layout_constraintEnd_toEndOf="parent"
-                android:layout_marginEnd="26dp" />
+                app:layout_constraintTop_toBottomOf="@id/valor_conta" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/despesas_value"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:textStyle="bold"
-                android:textSize="18sp"
-                android:textColor="@color/despesas_color"
+                android:layout_marginEnd="26dp"
                 android:layout_marginRight="22dp"
                 android:text="@string/valor_empity"
-               app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txt_recitas"
-                android:layout_marginEnd="26dp" />
+                android:textColor="@color/despesas_color"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txt_recitas" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -149,60 +148,50 @@
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/receita_titulo"
-        android:textSize="25sp"
-        android:layout_marginTop="50dp"
-        android:layout_marginStart="10dp"
-        android:text="@string/txt_receitas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/mcv_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/txt_receitas"
+        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginLeft="8dp" />
+        app:layout_constraintTop_toBottomOf="@id/mcv_content" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/receita_cards"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="8dp"
+        android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toBottomOf="@id/receita_titulo"
         tools:itemCount="2"
-        android:orientation="horizontal"
-        tools:listitem="@layout/item_receitas_card"
-        />
+        tools:listitem="@layout/item_receitas_card" />
 
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/despesa_titulo"
-        android:textSize="25sp"
-        android:layout_marginTop="50dp"
-        android:layout_marginStart="10dp"
-        android:text="@string/txt_despesas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/receita_cards"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="50dp"
+        android:text="@string/txt_despesas"
+        android:textSize="25sp"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginLeft="8dp" />
+        app:layout_constraintTop_toBottomOf="@id/receita_cards" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/despesa_cards"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_margin="8dp"
+        android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintTop_toBottomOf="@id/despesa_titulo"
         tools:itemCount="2"
-        android:orientation="horizontal"
-        tools:listitem="@layout/item_despesa_card"
-        />
-
-
-
-
-
-
-
-
+        tools:listitem="@layout/item_despesa_card" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

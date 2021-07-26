@@ -16,7 +16,10 @@ import com.example.mybills.presentation.view.receitas.EditReceitaActivity
 class DespesasListaActivity : AppCompatActivity() {
 
     private val viewModel by lazy {
-        ViewModelProvider(this, DespesaViewModelFactory((application as DataAplication).despesaRepositori))
+        ViewModelProvider(
+            this,
+            DespesaViewModelFactory((application as DataAplication).despesaRepositori)
+        )
             .get(AddDespesaViewModel::class.java)
     }
 
@@ -24,10 +27,10 @@ class DespesasListaActivity : AppCompatActivity() {
 
     private val adapter by lazy {
         DespesaAdapter(
-            onClickDelete ={id ->
+            onClickDelete = { id ->
                 viewModel.delete(id)
             },
-            onclickUpdadte ={
+            onclickUpdadte = {
                 onCreateUpdate(it)
             }
 
@@ -40,7 +43,7 @@ class DespesasListaActivity : AppCompatActivity() {
                 this,
                 EditReceitaActivity::class.java
             ).apply {
-                putExtra("despesa",despesa)
+                putExtra("despesa", despesa)
             }
         )
 
@@ -52,8 +55,8 @@ class DespesasListaActivity : AppCompatActivity() {
         setContentView(biding.root)
         biding.etValorDespesa.adapter = adapter
 
-        viewModel.getAll().observe(this,{despesaList ->
-            Log.d("despesa","${despesaList}")
+        viewModel.getAll().observe(this, { despesaList ->
+            Log.d("despesa", "${despesaList}")
             adapter.submitList(despesaList)
         })
     }

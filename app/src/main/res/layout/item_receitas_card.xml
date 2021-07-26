@@ -27,10 +27,10 @@
                 android:id="@+id/txt_titulo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
                 android:text="@string/valor_da_receita"
                 android:textColor="@color/receita_color"
                 android:textSize="18sp"
+                android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Valor Receita" />
@@ -54,15 +54,15 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/txt_value"
                 tools:text="24/08/2021" />
+
             <ImageButton
                 android:id="@+id/delete_btn"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:background="?attr/actionBarItemBackground"
                 android:src="@drawable/ic_delete_black"
-                app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                />
+                app:layout_constraintTop_toTopOf="parent" />
 
 
             <ImageButton
@@ -72,10 +72,7 @@
                 android:background="?attr/actionBarItemBackground"
                 android:src="@drawable/ic_edit_black"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                />
-
-
+                app:layout_constraintEnd_toEndOf="parent" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>

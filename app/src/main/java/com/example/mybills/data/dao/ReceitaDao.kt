@@ -2,7 +2,6 @@ package com.example.mybills.data.dao
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.example.mybills.domain.Despesa
 import com.example.mybills.domain.Receita
 
 @Dao
@@ -17,8 +16,8 @@ interface ReceitaDao {
     @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun update(receita: Receita)
 
-    @Query("DELETE FROM Receita WHERE id LIKE :id_" )
-    fun delete(id_:Int)
+    @Query("DELETE FROM Receita WHERE id LIKE :id_")
+    fun delete(id_: Int)
 
     @Query("SELECT  SUM(_despesa_value)  FROM Receita")
     fun getSum(): LiveData<Double>

@@ -8,14 +8,14 @@ import kotlinx.coroutines.runBlocking
 
 class DespesaRepositorie(private val despesaDao: DespesaDao) {
 
-  fun insert(despesa: Despesa)= runBlocking {
-        launch(Dispatchers.IO){
+    fun insert(despesa: Despesa) = runBlocking {
+        launch(Dispatchers.IO) {
             despesaDao.insert(despesa)
         }
-  }
+    }
 
-    fun update(despesa: Despesa)= runBlocking {
-        launch(Dispatchers.IO){
+    fun update(despesa: Despesa) = runBlocking {
+        launch(Dispatchers.IO) {
             despesaDao.update(despesa)
         }
     }
@@ -30,7 +30,6 @@ class DespesaRepositorie(private val despesaDao: DespesaDao) {
     }
 
     fun getSum() = despesaDao.getSum()
-
 
 
 }

@@ -5,19 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
-import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import com.example.mybills.DataAplication
 import com.example.mybills.databinding.ActivityEditDespesaBinding
-import com.example.mybills.databinding.ActivityEditReceitaBinding
 import com.example.mybills.domain.Despesa
-import com.example.mybills.domain.Receita
 import com.example.mybills.presentation.view.despesa.viewModel.AddDespesaViewModel
 import com.example.mybills.presentation.view.despesa.viewModel.DespesaViewModelFactory
 import com.example.mybills.presentation.view.main.MainActivity
-import com.example.mybills.presentation.view.receitas.viewModel.AddReceitaViewMode
-import com.example.mybills.presentation.view.receitas.viewModel.ReceitaViewModelFactory
 import java.text.NumberFormat
 import java.util.*
 
@@ -25,10 +20,13 @@ class EditDespesaActivity : AppCompatActivity() {
 
     private val biding by lazy { ActivityEditDespesaBinding.inflate(layoutInflater) }
 
-    lateinit var despesa : Despesa
+    lateinit var despesa: Despesa
 
     private val viewModel by lazy {
-        ViewModelProvider(this, DespesaViewModelFactory((application as DataAplication).despesaRepositori))
+        ViewModelProvider(
+            this,
+            DespesaViewModelFactory((application as DataAplication).despesaRepositori)
+        )
             .get(AddDespesaViewModel::class.java)
     }
 
@@ -50,9 +48,11 @@ class EditDespesaActivity : AppCompatActivity() {
             onBackPressed()
         }
 
-        biding.btnConfirmar.setOnClickListener{
-            if (validation()){
-                val value = biding.etValorDespesa.text?.replace("""[R$,.]""".toRegex(), "")?.trim()!!.toDouble()
+        biding.btnConfirmar.setOnClickListener {
+            if (validation()) {
+                val value =
+                    biding.etValorDespesa.text?.replace("""[R$,.]""".toRegex(), "")?.trim()!!
+                        .toDouble()
                 val despesa = Despesa(
                     id = despesa.id,
                     valor = value,
@@ -76,7 +76,9 @@ class EditDespesaActivity : AppCompatActivity() {
 
     private fun loadValues() {
 
-        biding.etValorDespesa.setText(NumberFormat.getCurrencyInstance().format((despesa.valor/100)))
+        biding.etValorDespesa.setText(
+            NumberFormat.getCurrencyInstance().format((despesa.valor / 100))
+        )
         biding.txtDescription.setText(despesa.decricao)
         biding.txtData.setText(despesa.data)
         biding.switchReceita.isChecked = despesa.pago
@@ -86,13 +88,13 @@ class EditDespesaActivity : AppCompatActivity() {
     private fun validation(): Boolean {
         var validation = true
         val erroDescription = "Campo Obrigatorio"
-        if (biding.etValorDespesa.text.isNullOrEmpty()){
+        if (biding.etValorDespesa.text.isNullOrEmpty()) {
             validation = false
             biding.etValorDespesa.error = erroDescription
-        }else if (biding.txtDescription.text.isNullOrEmpty()){
+        } else if (biding.txtDescription.text.isNullOrEmpty()) {
             biding.txtDescription.error = erroDescription
             validation = false
-        }else if (biding.txtData.text.isNullOrEmpty()){
+        } else if (biding.txtData.text.isNullOrEmpty()) {
             biding.txtData.error = erroDescription
             validation = false
         }
@@ -102,7 +104,7 @@ class EditDespesaActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         biding.etValorDespesa.addTextChangedListener(object : TextWatcher {
-            private  var dinheiro =""
+            private var dinheiro = ""
 
             override fun afterTextChanged(s: Editable?) {}
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -114,7 +116,7 @@ class EditDespesaActivity : AppCompatActivity() {
 
                     val parsed = cleanString.toDouble()
 
-                    val formatted = NumberFormat.getCurrencyInstance().format((parsed/100))
+                    val formatted = NumberFormat.getCurrencyInstance().format((parsed / 100))
 
                     dinheiro = formatted
 

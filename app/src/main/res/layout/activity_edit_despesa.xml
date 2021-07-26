@@ -5,44 +5,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.view.despesa.EditDespesaActivity">
+
     <ImageButton
         android:id="@+id/close_btn"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:background="?attr/actionBarItemBackground"
         android:src="@drawable/ic_close_black"
-        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/label_Valor_despesa"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/valor_da_despesa"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="30dp"
+        android:text="@string/valor_da_despesa"
         android:textSize="22sp"
         android:textStyle="bold"
-        android:layout_marginStart="8dp"
-        app:layout_constraintTop_toBottomOf="@id/close_btn"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginLeft="8dp" />
+        app:layout_constraintTop_toBottomOf="@id/close_btn" />
 
-    <!--    <EditText-->
-    <!--        android:id="@+id/et_valor_receita"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:inputType="number"-->
-    <!--        android:layout_marginTop="8dp"-->
-    <!--        android:layout_marginStart="8dp"-->
-    <!--        android:layout_marginEnd="8dp"-->
-    <!--        android:textSize="32sp"-->
-    <!--        android:hint="@string/valor_empity"-->
-    <!--        android:digits="0123456789,."-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/label_Valor_recita" />-->
-    <!--    -->
+
     <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/et_valor_despesa"
         android:layout_width="match_parent"
@@ -104,16 +90,15 @@
         android:id="@+id/switch_receita"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="@string/txt_pago"
         android:layout_margin="8dp"
-        android:textSize="18sp"
+        android:checked="true"
         android:paddingStart="16dp"
+        android:paddingLeft="16dp"
+        android:text="@string/txt_pago"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/data_despesa"
-        android:checked="true"
-        android:paddingLeft="16dp" />
-
+        app:layout_constraintTop_toBottomOf="@id/data_despesa" />
 
 
     <com.google.android.material.button.MaterialButton
@@ -122,9 +107,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:text="@string/salvar_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

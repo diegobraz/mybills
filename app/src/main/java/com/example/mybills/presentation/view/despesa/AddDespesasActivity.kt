@@ -23,10 +23,13 @@ class AddDespesasActivity : AppCompatActivity() {
 
 
     private val viewModel by lazy {
-        ViewModelProvider(this, DespesaViewModelFactory((application as DataAplication).despesaRepositori))
+        ViewModelProvider(
+            this,
+            DespesaViewModelFactory((application as DataAplication).despesaRepositori)
+        )
             .get(AddDespesaViewModel::class.java)
     }
-    
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(biding.root)
@@ -34,12 +37,13 @@ class AddDespesasActivity : AppCompatActivity() {
     }
 
 
-
     private fun loadClicks() {
 
-        biding.btnConfirmar.setOnClickListener{
-            if (validation()){
-                val value = biding.etValorDespesa.text?.replace("""[R$,.]""".toRegex(), "")?.trim()!!.toDouble()
+        biding.btnConfirmar.setOnClickListener {
+            if (validation()) {
+                val value =
+                    biding.etValorDespesa.text?.replace("""[R$,.]""".toRegex(), "")?.trim()!!
+                        .toDouble()
                 val despesa = Despesa(
                     valor = value,
                     decricao = biding.txtDescription.text.toString(),
@@ -47,10 +51,10 @@ class AddDespesasActivity : AppCompatActivity() {
                     pago = biding.switchReceita.isChecked
                 )
 
-            viewModel.insert(despesa)
+                viewModel.insert(despesa)
 
                 Toast.makeText(this, "Despesa Salva com sucesso", Toast.LENGTH_SHORT).show()
-                Log.d("diegoLog","${despesa}")
+                Log.d("diegoLog", "${despesa}")
                 val intent = Intent(this, MainActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
@@ -64,13 +68,13 @@ class AddDespesasActivity : AppCompatActivity() {
     private fun validation(): Boolean {
         var validation = true
         val erroDescription = "Campo Obrigatorio"
-        if (biding.etValorDespesa.text.isNullOrEmpty()){
+        if (biding.etValorDespesa.text.isNullOrEmpty()) {
             validation = false
             biding.etValorDespesa.error = erroDescription
-        }else if (biding.txtDescription.text.isNullOrEmpty()){
+        } else if (biding.txtDescription.text.isNullOrEmpty()) {
             biding.txtDescription.error = erroDescription
             validation = false
-        }else if (biding.txtData.text.isNullOrEmpty()){
+        } else if (biding.txtData.text.isNullOrEmpty()) {
             biding.txtData.error = erroDescription
             validation = false
         }
@@ -80,7 +84,7 @@ class AddDespesasActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         biding.etValorDespesa.addTextChangedListener(object : TextWatcher {
-            private  var dinheiro =""
+            private var dinheiro = ""
 
             override fun afterTextChanged(s: Editable?) {}
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
@@ -92,7 +96,7 @@ class AddDespesasActivity : AppCompatActivity() {
 
                     val parsed = cleanString.toDouble()
 
-                    val formatted = NumberFormat.getCurrencyInstance().format((parsed/100))
+                    val formatted = NumberFormat.getCurrencyInstance().format((parsed / 100))
 
                     dinheiro = formatted
 

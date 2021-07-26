@@ -6,21 +6,21 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.mybills.domain.Despesa
 import com.example.mybills.repositorie.DespesaRepositorie
 
-class AddDespesaViewModel( private val  despesaRepositorie: DespesaRepositorie): ViewModel() {
+class AddDespesaViewModel(private val despesaRepositorie: DespesaRepositorie) : ViewModel() {
 
-    fun insert(despesa:Despesa){
-       despesaRepositorie.insert(despesa)
+    fun insert(despesa: Despesa) {
+        despesaRepositorie.insert(despesa)
     }
 
     fun getAll(): LiveData<List<Despesa>> {
         return despesaRepositorie.getAll()
     }
 
-    fun delete(id:Int){
+    fun delete(id: Int) {
         despesaRepositorie.delete(id)
     }
 
-    fun update(despesa:Despesa){
+    fun update(despesa: Despesa) {
         despesaRepositorie.update(despesa)
     }
 
@@ -28,7 +28,8 @@ class AddDespesaViewModel( private val  despesaRepositorie: DespesaRepositorie):
 
 
 @Suppress("UNCHECKED_CAST")
-class DespesaViewModelFactory(private val despesaRepositorie: DespesaRepositorie): ViewModelProvider.Factory {
+class DespesaViewModelFactory(private val despesaRepositorie: DespesaRepositorie) :
+    ViewModelProvider.Factory {
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         return AddDespesaViewModel(despesaRepositorie = despesaRepositorie) as T
     }

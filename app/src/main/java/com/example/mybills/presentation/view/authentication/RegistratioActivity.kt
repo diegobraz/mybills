@@ -20,53 +20,61 @@ class RegistratioActivity : AppCompatActivity() {
         setContentView(biding.root)
         loadListener()
     }
+
     private fun loadListener() {
         biding.closeBtn.setOnClickListener {
-           onBackPressed()
+            onBackPressed()
         }
 
-        biding.btnRegistre.setOnClickListener{
-             if (validationRegistre()){
+        biding.btnRegistre.setOnClickListener {
+            if (validationRegistre()) {
 
-                 val email: String = biding.txtEmailRegistre.text.toString().trim { it <= ' ' }
-                 val password: String = biding.txtPassword.text.toString().trim { it <= ' ' }
+                val email: String = biding.txtEmailRegistre.text.toString().trim { it <= ' ' }
+                val password: String = biding.txtPassword.text.toString().trim { it <= ' ' }
 
 
-                FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,password)
+                FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(
-                        OnCompleteListener<AuthResult>{ task ->
-                            if (task.isSuccessful){
-                                val FirebaseUser : FirebaseUser = task.result!!.user!!
-                                Toast.makeText(this@RegistratioActivity,
+                        OnCompleteListener<AuthResult> { task ->
+                            if (task.isSuccessful) {
+                                val FirebaseUser: FirebaseUser = task.result!!.user!!
+                                Toast.makeText(
+                                    this@RegistratioActivity,
                                     "Registrado com sucesso",
-                                    Toast.LENGTH_SHORT).show()
-                                val intent = Intent(this@RegistratioActivity, MainActivity::class.java)
-                                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                                intent.putExtra("user_id",FirebaseUser.uid)
-                                intent.putExtra("email_id",email)
+                                    Toast.LENGTH_SHORT
+                                ).show()
+                                val intent =
+                                    Intent(this@RegistratioActivity, MainActivity::class.java)
+                                intent.flags =
+                                    Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                                intent.putExtra("user_id", FirebaseUser.uid)
+                                intent.putExtra("email_id", email)
                                 startActivity(intent)
                                 finish()
-                            }else{
-                                Toast.makeText(this@RegistratioActivity, task.exception?.message.toString(), Toast.LENGTH_SHORT).show()
+                            } else {
+                                Toast.makeText(
+                                    this@RegistratioActivity,
+                                    task.exception?.message.toString(),
+                                    Toast.LENGTH_SHORT
+                                ).show()
                             }
                         }
                     )
 
-             }
-           }
+            }
         }
+    }
 
-    private fun validationRegistre():Boolean {
+    private fun validationRegistre(): Boolean {
         var validaForma = true
-        if (biding.txtEmailRegistre.text.isNullOrEmpty()){
+        if (biding.txtEmailRegistre.text.isNullOrEmpty()) {
             validaForma = false
             biding.txtEmailRegistre.error = "email obrigatorio"
-        }
-        else  if (biding.txtPassword.text.isNullOrEmpty()){
+        } else if (biding.txtPassword.text.isNullOrEmpty()) {
             validaForma = false
             biding.passwordRegistre.error = "password obrigatorio"
         }
-    return  validaForma
+        return validaForma
     }
 
 }
