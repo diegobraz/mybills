@@ -23,7 +23,6 @@ class AddReceitaViewMode(private val receitaRepositorie: ReceitaRepositorie):Vie
     fun update(receita: Receita){
         receitaRepositorie.update(receita)
     }
-
 }
 
 @Suppress("UNCHECKED_CAST")

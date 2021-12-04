@@ -9,11 +9,8 @@ import com.example.mybills.repositorie.ReceitaRepositorie
 
 
 class DataAplication: Application(){
-
-
     val dataBase by lazy { AppDataBase.getDatabase(this) }
     val receitaRepositori  by lazy { ReceitaRepositorie(dataBase.recietaDao()) }
     val despesaRepositori by lazy { DespesaRepositorie(dataBase.despesaDao()) }
     val appComponent by lazy { DaggerApplicationComponent.factory().create(this) }
-
 }

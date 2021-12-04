@@ -37,8 +37,6 @@ class ReceitasListaActivity : AppCompatActivity() {
                 putExtra("receita",receita)
             }
         )
-
-
     }
 
     private val viewModel by lazy {
@@ -54,8 +52,5 @@ class ReceitasListaActivity : AppCompatActivity() {
         viewModel.getAll().observe(this,{ receitaList ->
             adapter.submitList(receitaList)
         })
-
-
     }
-
 }

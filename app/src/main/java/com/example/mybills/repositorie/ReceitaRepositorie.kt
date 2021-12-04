@@ -21,7 +21,6 @@ class ReceitaRepositorie(private val receitaDao: ReceitaDao) {
 
     fun getAll() = receitaDao.getAll()
 
-
     fun delete(id: Int) = runBlocking {
         launch(Dispatchers.IO) {
             receitaDao.delete(id)
@@ -29,6 +28,4 @@ class ReceitaRepositorie(private val receitaDao: ReceitaDao) {
     }
 
     fun getSum() = receitaDao.getSum()
-
-
 }

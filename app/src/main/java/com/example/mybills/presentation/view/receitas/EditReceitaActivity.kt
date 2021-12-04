@@ -29,25 +29,16 @@ class EditReceitaActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         receita = intent.getSerializableExtra("receita") as Receita
-
         setContentView(biding.root)
-
         loadValues()
         buttonClick()
-
-
     }
 
     private fun buttonClick() {
-
-
         biding.closeBtn.setOnClickListener {
             onBackPressed()
         }
-
-
         biding.btnConfirmar.setOnClickListener {
             if (validation()){
                 val value = biding.etValorReceita.text?.replace("""[R$,.]""".toRegex(), "")?.trim()!!.toDouble()
@@ -64,9 +55,7 @@ class EditReceitaActivity : AppCompatActivity() {
                 intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
             }
-
         }
-
     }
 
     private fun loadValues() {
@@ -92,13 +81,10 @@ class EditReceitaActivity : AppCompatActivity() {
         return validation
     }
 
-
-
     override fun onResume() {
         super.onResume()
         biding.etValorReceita.addTextChangedListener(object : TextWatcher {
             private  var dinheiro =""
-
             override fun afterTextChanged(s: Editable?) {}
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -119,7 +105,6 @@ class EditReceitaActivity : AppCompatActivity() {
                 }
             }
         })
-
 
         biding.txtData.addTextChangedListener(object : TextWatcher {
             private var current = ""

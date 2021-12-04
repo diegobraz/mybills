@@ -151,5 +151,4 @@ class AddDespesasActivity : AppCompatActivity() {
             override fun afterTextChanged(s: Editable) {}
         })
     }
-
 }

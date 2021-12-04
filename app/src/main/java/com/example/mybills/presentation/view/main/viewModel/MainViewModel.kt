@@ -13,7 +13,6 @@ class MainViewModel(
     private val despesaRepositorie: DespesaRepositorie
 ) : ViewModel() {
 
-
     fun getSumReceita(): LiveData<Double> {
         return receitaRepositorie.getSum()
     }
@@ -21,8 +20,6 @@ class MainViewModel(
     fun getSumDespesa(): LiveData<Double> {
         return despesaRepositorie.getSum()
     }
-
-
     fun deleteReceita(id: Int) {
         receitaRepositorie.delete(id)
     }
@@ -31,7 +28,6 @@ class MainViewModel(
         despesaRepositorie.delete(id)
     }
 
-
     fun getAllReceita(): LiveData<List<Receita>> {
         return receitaRepositorie.getAll()
     }
@@ -39,8 +35,6 @@ class MainViewModel(
     fun getAllDespesa(): LiveData<List<Despesa>> {
         return despesaRepositorie.getAll()
     }
-
-
 }
 
 @Suppress("UNCHECKED_CAST")
@@ -54,5 +48,4 @@ class MainViewModelFactory(
             receitaRepositorie = receitaRepositorie
         ) as T
     }
-
 }

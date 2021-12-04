@@ -171,7 +171,6 @@ class EditDespesaActivity : AppCompatActivity() {
                     biding.txtData.setSelection(if (sel < current.length) sel else current.length)
                 }
             }
-
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
             override fun afterTextChanged(s: Editable) {}
         })

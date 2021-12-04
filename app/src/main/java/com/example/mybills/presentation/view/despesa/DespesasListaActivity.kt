@@ -54,7 +54,6 @@ class DespesasListaActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(biding.root)
         biding.etValorDespesa.adapter = adapter
-
         viewModel.getAll().observe(this, { despesaList ->
             Log.d("despesa", "${despesaList}")
             adapter.submitList(despesaList)
