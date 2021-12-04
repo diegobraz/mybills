@@ -36,15 +36,24 @@ class MainActivity : AppCompatActivity() {
             R.anim.rotate_open_anim
         )
     }
-    private val rotateclose by lazy { AnimationUtils.loadAnimation(this, R.anim.rotate_close_anim) }
-    private val rotateToBottom by lazy { AnimationUtils.loadAnimation(this, R.anim.to_bottom_anim) }
+    private val rotateClose by lazy {
+        AnimationUtils.loadAnimation(
+            this,
+            R.anim.rotate_close_anim
+        )
+    }
+    private val rotateToBottom by lazy {
+        AnimationUtils.loadAnimation(
+            this,
+            R.anim.to_bottom_anim
+        )
+    }
     private val rotateFromBottom by lazy {
         AnimationUtils.loadAnimation(
             this,
             R.anim.from_bottom_anim
         )
     }
-
     private val viewModel by lazy {
         ViewModelProvider(
             this, MainViewModelFactory(
@@ -54,7 +63,6 @@ class MainActivity : AppCompatActivity() {
         )
             .get(MainViewModel::class.java)
     }
-
     private val receitaAdapter by lazy {
         ReceitasAdapter(
             onClickDelete = { id ->
@@ -65,7 +73,6 @@ class MainActivity : AppCompatActivity() {
             }
         )
     }
-
     private val despesAdapter by lazy {
         DespesaAdapter(
             onClickDelete = { id ->
@@ -77,13 +84,11 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(biding.root)
         biding.receitaCards.adapter = receitaAdapter
         biding.despesaCards.adapter = despesAdapter
-
         loadClicks()
         loadValues()
         loadAdpter()
@@ -97,12 +102,9 @@ class MainActivity : AppCompatActivity() {
         viewModel.getAllDespesa().observe(this, { despesaList ->
             despesAdapter.submitList(despesaList)
         })
-
-
     }
 
     private fun onCreateUpdateReceita(receita: Receita) {
-
         startActivity(
             Intent(
                 this,
@@ -111,8 +113,6 @@ class MainActivity : AppCompatActivity() {
                 putExtra("receita", receita)
             }
         )
-
-
     }
 
     private fun onCreateUpdateDespesa(despesa: Despesa) {
@@ -124,10 +124,7 @@ class MainActivity : AppCompatActivity() {
                 putExtra("despesa", despesa)
             }
         )
-
-
     }
-
 
     private fun loadValues() {
         viewModel.getSumReceita().observe(this, { receitaSum ->
@@ -147,7 +144,6 @@ class MainActivity : AppCompatActivity() {
             valorTota -= sumDespesa ?: 0.0
             biding.valorConta.setText(NumberFormat.getCurrencyInstance().format((valorTota / 100)))
         })
-
     }
 
     private fun loadClicks() {
@@ -155,16 +151,15 @@ class MainActivity : AppCompatActivity() {
         biding.floatingButtonAdd.setOnClickListener {
             onAddButtonCliked()
         }
+
         biding.floatingReceitasButton.setOnClickListener {
             val intent = Intent(this, AddReceitaActivity::class.java)
             startActivity(intent)
-
         }
 
         biding.floatingDespesasButton.setOnClickListener {
             val intent = Intent(this@MainActivity, AddDespesasActivity::class.java)
             startActivity(intent)
-
         }
 
         biding.receitaValue.setOnClickListener {
@@ -185,7 +180,6 @@ class MainActivity : AppCompatActivity() {
         click = !click
     }
 
-
     private fun setAnimation(clicked: Boolean) {
 
         if (!clicked) {
@@ -193,12 +187,10 @@ class MainActivity : AppCompatActivity() {
             biding.floatingDespesasButton.startAnimation(rotateFromBottom)
             biding.floatingReceitasButton.startAnimation(rotateFromBottom)
         } else {
-            biding.floatingButtonAdd.startAnimation(rotateclose)
+            biding.floatingButtonAdd.startAnimation(rotateClose)
             biding.floatingDespesasButton.startAnimation(rotateToBottom)
             biding.floatingReceitasButton.startAnimation(rotateToBottom)
-
         }
-
     }
 
     private fun setVisibility(clicked: Boolean) {
@@ -221,6 +213,4 @@ class MainActivity : AppCompatActivity() {
             biding.floatingReceitasButton.isClickable = false
         }
     }
-
-
 }

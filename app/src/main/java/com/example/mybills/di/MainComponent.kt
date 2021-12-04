@@ -25,5 +25,4 @@ interface MainComponent {
     fun inject(activity: EditReceitaActivity)
     fun inject(activity: ReceitasListaActivity)
     fun inject(activity: MainActivity)
-
 }

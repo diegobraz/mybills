@@ -20,8 +20,6 @@ import java.util.*
 class AddDespesasActivity : AppCompatActivity() {
 
     private val biding by lazy { ActivityAddDespesasBinding.inflate(layoutInflater) }
-
-
     private val viewModel by lazy {
         ViewModelProvider(
             this,
@@ -36,7 +34,6 @@ class AddDespesasActivity : AppCompatActivity() {
         loadClicks()
     }
 
-
     private fun loadClicks() {
 
         biding.btnConfirmar.setOnClickListener {
@@ -50,9 +47,7 @@ class AddDespesasActivity : AppCompatActivity() {
                     data = biding.txtData.text.toString(),
                     pago = biding.switchReceita.isChecked
                 )
-
                 viewModel.insert(despesa)
-
                 Toast.makeText(this, "Despesa Salva com sucesso", Toast.LENGTH_SHORT).show()
                 Log.d("diegoLog", "${despesa}")
                 val intent = Intent(this, MainActivity::class.java)

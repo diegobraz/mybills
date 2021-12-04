@@ -6,7 +6,6 @@ import com.example.mybills.domain.Receita
 
 @Dao
 interface ReceitaDao {
-
     @Insert
     suspend fun insert(receita: Receita)
 
@@ -21,5 +20,4 @@ interface ReceitaDao {
 
     @Query("SELECT  SUM(valor)  FROM Receita")
     fun getSum(): LiveData<Double>
-
 }

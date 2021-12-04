@@ -56,7 +56,6 @@ class LoginUserActivity : AppCompatActivity() {
                             }
                         }
                     )
-
             } else {
                 Toast.makeText(
                     this@LoginUserActivity,
@@ -64,10 +63,7 @@ class LoginUserActivity : AppCompatActivity() {
                     Toast.LENGTH_SHORT
                 ).show()
             }
-
-
         }
-
     }
 
     private fun validation(): Boolean {
@@ -77,8 +73,6 @@ class LoginUserActivity : AppCompatActivity() {
         } else if (biding.txtPassword.text.isNullOrEmpty()) {
             validation = false
         }
-
         return validation
-
     }
 }

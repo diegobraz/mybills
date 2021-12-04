@@ -32,7 +32,6 @@ class RegistratioActivity : AppCompatActivity() {
                 val email: String = biding.txtEmailRegistre.text.toString().trim { it <= ' ' }
                 val password: String = biding.txtPassword.text.toString().trim { it <= ' ' }
 
-
                 FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(
                         OnCompleteListener<AuthResult> { task ->
@@ -76,5 +75,4 @@ class RegistratioActivity : AppCompatActivity() {
         }
         return validaForma
     }
-
 }

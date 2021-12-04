@@ -18,14 +18,12 @@ class DespesaAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemDespesaCardBinding.inflate(inflater, parent, false)
-
         return viewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: viewHolder, position: Int) {
         holder.bind(getItem(position))
     }
-
 
     inner class viewHolder(
         private val binding: ItemDespesaCardBinding
@@ -41,10 +39,8 @@ class DespesaAdapter(
             binding.updateBtn.setOnClickListener {
                 onclickUpdadte(item)
             }
-
         }
     }
-
 
     class DiffCallback : DiffUtil.ItemCallback<Despesa>() {
         override fun areItemsTheSame(oldItem: Despesa, newItem: Despesa) = oldItem == newItem
@@ -53,6 +49,4 @@ class DespesaAdapter(
             oldItem.id == newItem.id
 
     }
-
-
 }

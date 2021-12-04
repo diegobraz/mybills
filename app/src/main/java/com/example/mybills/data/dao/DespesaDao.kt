@@ -6,7 +6,6 @@ import com.example.mybills.domain.Despesa
 
 @Dao
 interface DespesaDao {
-
     @Insert
     suspend fun insert(despesa: Despesa)
 
