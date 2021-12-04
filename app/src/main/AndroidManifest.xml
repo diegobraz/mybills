@@ -17,7 +17,7 @@
             android:name=".presentation.view.receitas.EditReceitaActivity"
             android:label="@string/title_activity_edit_receita"
             android:theme="@style/Theme.MyBills.NoActionBar" />
-        <activity android:name=".presentation.view.receitas.EditReceita" />
+
         <activity android:name=".presentation.view.despesa.DespesasListaActivity" />
         <activity android:name=".presentation.view.receitas.ReceitasListaActivity" />
         <activity android:name=".presentation.view.receitas.AddReceitaActivity" />

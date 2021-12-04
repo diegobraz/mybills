@@ -30,7 +30,6 @@ class MainActivity : AppCompatActivity() {
     private val biding by lazy { ActivityMainBinding.inflate(layoutInflater) }
     private var click = false
     private var valorTota = 0.0
-
     private val rotateAnimation by lazy {
         AnimationUtils.loadAnimation(
             this,
